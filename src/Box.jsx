@@ -17,6 +17,7 @@ function generateNum(count) {
   return newArray;
 };
 
+
   function holdClick(index) {
   setNum(prev =>
     prev.map((dice, i) =>
@@ -24,6 +25,7 @@ function generateNum(count) {
     )
   );
 }
+
 
   function handleClick(){
     setNum(prev=>prev.map(dice=>
@@ -38,12 +40,14 @@ function handleNew(){
  setWon(false);
 }
 
+
 function handleDifficultyChange(e) {
   const count = e.target.value;
   setDiceCount(count); 
   setNum(generateNum(count));
   setWon(false);
 }
+
 
 const [won, setWon] = useState(false);
 
@@ -55,6 +59,7 @@ useEffect(() => {
     setWon(true);
   }
 }, [num]);
+
   
 
 return (
@@ -67,20 +72,22 @@ return (
 
   {won && <h2 className="win-text">🎉 Winner! 🎉</h2>}
 
-  <div className="box">
 
-     {num.map((dice, index) => (
-     <button key={index} className={`number ${dice.isHeld ? "held" : ""}`} onClick={() => holdClick(index)}>
-        {dice.value}
-     </button>
-  ))};
+
+<div className="box">
+
+  {num.map((dice, index) => (
+    <button key={index} className={`number ${dice.isHeld ? "held" : ""}`} onClick={() => holdClick(index)}>
+      {dice.value}
+    </button>
+    ))};
  
-  </div>
-  <div className="roll-dice">
+</div>
+
+<div className="roll-dice">
     <button onClick={handleClick}>Roll Dice</button>
     <button onClick={handleNew}>New Game</button>
-
-  </div>
+</div>
   
   </>
   
